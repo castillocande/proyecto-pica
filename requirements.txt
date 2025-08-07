@@ -4,5 +4,5 @@ pytest-shutil
 matplotlib
 argparse
 ultralytics
-PIL
+Pillow
 torch
