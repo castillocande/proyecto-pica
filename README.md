@@ -1,6 +1,13 @@
 # YOLOv11 para Monitoreo de Insectos Sociales
-En el siguiente repositorio se encuentra el código para la detección de insectos sociales utilizando el modelo YOLOv11. EL propósito de este proyecto es poder inferir el tipo de avispas que se encuentra en cada frame y poder formar un trackeo de cada individuo, con el fin de tener un estudio sobre el comportamiento de la especie. 
 
+En este repositorio se encuentra el código desarrollado para la detección y el seguimiento de insectos sociales utilizando el modelo **YOLOv11**.
+
+El objetivo principal del proyecto es **inferir el tipo de avispa presente en cada frame de video y realizar el tracking de cada insecto**, con el fin de analizar y estudiar el comportamiento de la especie a lo largo del tiempo.
+
+Todas las actividades, dudas y experimentos realizados durante el desarrollo del proyecto fueron documentados en la siguiente bitácora:
+https://docs.google.com/document/d/1_7aP9gireAEJLyceqpsj3g371sJiPpdeGVt_UWBfflw/edit?usp=sharing 
+
+## Integrantes: 
 * [Nataly Hofkamp](https://github.com/NatalyHofkamp)
 * [Candela Castillo](https://github.com/castillocande)
 
@@ -38,7 +45,7 @@ Para el entrenamiento del modelo se utilizaron los siguientes hiperparámetros:
 
  
 
-# Métricas 
+## Métricas 
 <img width="2400" height="1200" alt="results" src="https://github.com/user-attachments/assets/d225e70d-0ee5-45d1-8f87-e4190e7a5fec" />
 
 <img width="3000" height="2250" alt="confusion_matrix" src="https://github.com/user-attachments/assets/50f7be40-c38d-487d-9659-9bfbd99753d6" />
@@ -113,7 +120,7 @@ Conjunto de datos provisto para el análisis y entrenamiento del modelo.
 - **videos/**
 
 
-# Observaciones y mejoras
+## Observaciones y mejoras
 
 - Es posible realizar nuevos entrenamientos variando los hiperparámetros con el objetivo de analizar su impacto en el rendimiento del modelo y detectar posibles mejoras.
 - Se encuentran disponibles cientos de videos adicionales para el análisis del comportamiento de avispas, que pueden utilizarse como conjunto de test y para validar el correcto funcionamiento del algoritmo de seguimiento ByteTrack.
