@@ -20,17 +20,16 @@ def box_iou(box1, box2):
 
 
 def main():
-
     parser = argparse.ArgumentParser(description="YOLOv11 Evaluation")
-    parser.add_argument("--model_path", default="yolov11/best.pt", help="Path to YOLOv11 model")
+    parser.add_argument("--model_path", default="src/models/best.pt", help="Path to YOLOv11 model")
     args = parser.parse_args()
 
     model = YOLO(args.model_path)
 
-    test_images = "yolov11/data_v11/valid/images"
-    test_labels = "yolov11/data_v11/valid/labels"
-    incorrect_folder = "results/prediction_visualization/incorrect_images"
-    correct_folder = "results/prediction_visualization/correct_images"
+    test_images = "data/images/test/images"
+    test_labels = "data/images/test/labels"
+    incorrect_folder = "results/prediction_visualization/incorrect_test_images"
+    correct_folder = "results/prediction_visualization/correct_test_images"
     os.makedirs(incorrect_folder, exist_ok=True)
     os.makedirs(correct_folder, exist_ok=True)
 
@@ -52,14 +51,14 @@ def main():
         true_boxes = []
         for line in lines:
             parts = line.strip().split()
-            cls = int(parts[0])
+            clase = int(parts[0])
             cx, cy, w, h = map(float, parts[1:])
             x1 = cx - w / 2
             y1 = cy - h / 2
             x2 = cx + w / 2
             y2 = cy + h / 2
             img_width, img_height = result.orig_shape[1], result.orig_shape[0]
-            true_boxes.append((cls, [x1 * img_width, y1 * img_height, x2 * img_width, y2 * img_height]))
+            true_boxes.append((clase, [x1 * img_width, y1 * img_height, x2 * img_width, y2 * img_height]))
 
         pred_boxes = list(zip(result.boxes.cls.tolist(), result.boxes.xyxy.tolist()))
 
@@ -67,10 +66,10 @@ def main():
         matched_true = set()
         iou_threshold = 0.5
 
-        for i, (t_cls, t_box) in enumerate(true_boxes):
-            for j, (p_cls, p_box) in enumerate(pred_boxes):
+        for i, (t_clase, t_box) in enumerate(true_boxes):
+            for j, (p_clase, p_box) in enumerate(pred_boxes):
                 iou = box_iou(t_box, p_box)
-                if iou > iou_threshold and t_cls == int(p_cls):
+                if iou > iou_threshold and t_clase == int(p_clase):
                     matched_pred.add(j)
                     matched_true.add(i)
                     break
@@ -84,11 +83,11 @@ def main():
         font_size = 20
         font = ImageFont.truetype("arial.ttf", font_size)
 
-        for cls, box in pred_boxes:
-            if cls == 0:
+        for clase, box in pred_boxes:
+            if clase == 0:
                 color = "red"
                 label = "avispa pred"
-            if cls == 1:
+            elif clase == 1:
                 color = "blue"
                 label = "reina pred"
             else:
@@ -97,11 +96,11 @@ def main():
             draw.rectangle(box, outline=color, width=5)
             draw.text((box[0], box[1] - font_size - 5), label, fill=color, font=font)
 
-        for cls, box in true_boxes:
-            if cls == 0:
+        for clase, box in true_boxes:
+            if clase == 0:
                 color = "hotpink"
                 label = "avispa true"
-            if cls == 1:
+            elif clase == 1:
                 color = "aqua"
                 label = "reina true"
             else:
