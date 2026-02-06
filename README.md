@@ -10,4 +10,9 @@ El dataset fue anotado y generado en la plataforma Roboflow anotando manualmente
  - consideración: el modelo YOLOv8 fue entrenado con imagenes aumentadas. Se buscó la manera de poder distinguir entre imagenes originales y aumentadas para poder entrenar al nuevo modelo solo con imagenes originales, pero no fue posible encontrar una manera exacta de hacerlo. Al ser un mosaico compuesto por varias imagenes, nos queda la duda sobre si puede estar confundiendo más al modelo, ya que en muchas imagenes aparen tornillos en esquinas que con la versión transformada, puede ser tomado como una avispa.
  - Se  encuentran disponibles cientos de videos para análisis del comportamiento de avispas, que funcionarán como parte del set de Test.
 
+# Métricas 
+<img width="2400" height="1200" alt="results" src="https://github.com/user-attachments/assets/d225e70d-0ee5-45d1-8f87-e4190e7a5fec" />
+
+<img width="3000" height="2250" alt="confusion_matrix" src="https://github.com/user-attachments/assets/6a8f171c-8cd4-4d3d-92a3-1cde262cba4f" />
+
 
